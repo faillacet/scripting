@@ -6,6 +6,7 @@ mkdir /wcode
 cd /wcode
 git clone --branch main https://github.com/faillacet/scripting.git
 cp /wcode/scripting/html/index.html /var/www/html/index.html
-sed -i 's/DATE_REPLACE/${DATE_ENV}/g'
+cd /var/www/html/
+sed -i 's/$$DATE_HOLDER *=.*/$$DATE_HOLDER='"$(date "+%y%m%d")"'/' abc.txt
 service httpd start
 chkconfig httpd on
