@@ -9,6 +9,6 @@ cp /test/scripting/html/index.html /var/www/html/index.html
 cd /var/www/html/
 old="DATE"
 new=$(date +%Y-%m-%d)
-sed -i 's/$old/$new/' index.html
+sed -i 's/${old}/${new}/' index.html
 service httpd start
 chkconfig httpd on
