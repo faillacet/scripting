@@ -2,11 +2,13 @@
 yum update -y
 yum install httpd -y
 yum install git -y
-mkdir /wcode
-cd /wcode
+mkdir /test
+cd /test
 git clone --branch main https://github.com/faillacet/scripting.git
-cp /wcode/scripting/html/index.html /var/www/html/index.html
+cp /test/scripting/html/index.html /var/www/html/index.html
 cd /var/www/html/
-sed -i 's/$$DATE_HOLDER *=.*/$$DATE_HOLDER='"$(date "+%y%m%d")"'/' index.html
+old="date"
+new=$(date +%Y-%m-%d)
+sed -i 's/$date/$new/' index.html
 service httpd start
 chkconfig httpd on
